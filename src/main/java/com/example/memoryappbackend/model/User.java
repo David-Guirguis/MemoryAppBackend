@@ -1,7 +1,6 @@
 package com.example.memoryappbackend.model;
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "t_user")
 public class User {
@@ -17,26 +16,18 @@ public class User {
     public User(String googleID) {
         this.googleID = googleID;
     }
+    public User() {}
 
     public String getGoogleID() {
         return googleID;
     }
-
     public void setGoogleID(String googleID) {
         this.googleID = googleID;
     }
-
-    public User() {
-
-    }
-
     public int getUserID() {
         return userID;
     }
-
     public void setUserID(int userID) {
         this.userID = userID;
     }
-
-
 }

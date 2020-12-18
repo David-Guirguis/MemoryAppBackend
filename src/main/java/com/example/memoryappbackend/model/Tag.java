@@ -1,5 +1,4 @@
 package com.example.memoryappbackend.model;
-
 import javax.persistence.*;
 
 @Entity
@@ -22,30 +21,23 @@ public class Tag {
         this.tag = tag;
     }
 
-    public Tag() {
-
-    }
+    public Tag() {}
 
     public int getTagID() {
         return tagID;
     }
-
     public void setTagID(int tagID) {
         this.tagID = tagID;
     }
-
     public String getTag() {
         return tag;
     }
-
     public void setTag(String tag) {
         this.tag = tag;
     }
-
     public MemoryItem getMemoryItem() {
         return memoryItem;
     }
-
     public void setMemoryItem(MemoryItem memoryItem) {
         this.memoryItem = memoryItem;
     }

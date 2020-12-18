@@ -1,6 +1,5 @@
 package com.example.memoryappbackend.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,51 +27,40 @@ public class MemoryItem {
     @JsonIgnoreProperties("memoryItem")
     private List<Tag> tags;
 
-
-
     public MemoryItem(User user, String memoryTitle, String memoryBody, ArrayList<Tag> tags) {
         this.user = user;
         this.memoryTitle = memoryTitle;
         this.memoryBody = memoryBody;
         this.tags = tags;
-
         this.tags.forEach(tag -> tag.setMemoryItem(this));
     }
 
-    public MemoryItem() {
-    }
+    public MemoryItem() {}
 
     public int getMemoryID() {
         return memoryID;
     }
-
     public void setMemoryID(int memoryID) {
         this.memoryID = memoryID;
     }
-
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
     public String getMemoryTitle() {
         return memoryTitle;
     }
-
     public void setMemoryTitle(String memoryTitle) {
         this.memoryTitle = memoryTitle;
     }
-
     public String getMemoryBody() {
         return memoryBody;
     }
-
     public void setMemoryBody(String memoryBody) {
         this.memoryBody = memoryBody;
     }
-
     public List<Tag> getTags() {
         return tags;
     }
