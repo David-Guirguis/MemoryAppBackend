@@ -16,16 +16,20 @@ import java.util.List;
 public class MemoryBusinessLogic {
     private static final Logger log = LoggerFactory.getLogger(MemoryBusinessLogic.class);
 
+    //Inject an instance of MemoryRepository here
     @Autowired
     private MemoryRepository memoryRepository;
 
+    //Inject an instance of UserRepository here
     @Autowired
     private UserRepository userRepository;
 
+    //Returns all memories from specific user
     public List<MemoryItem> getUserMemories(String googleID) {
          return memoryRepository.findAllByUser_GoogleID(googleID);
     }
 
+    //Posts a memory to the database
     public void postMemory(String googleID, String memoryTitle, String memoryBody, List<String> memoryTags) {
         User user = userRepository.findByGoogleID(googleID);
 
@@ -36,10 +40,12 @@ public class MemoryBusinessLogic {
         memoryRepository.save(memoryItem);
     }
 
+    //Deletes memory from database
     public void deleteMemory(int memoryID) {
         memoryRepository.deleteById(memoryID);
     }
 
+    //Edits existing memory in database
     public void editMemory(String googleID, Integer memoryID, String memoryTitle, String memoryBody, List<String> memoryTags) {
         MemoryItem oldMemory = memoryRepository.findById(memoryID).get();
         deleteMemory(oldMemory.getMemoryID());
