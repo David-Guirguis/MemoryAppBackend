@@ -14,6 +14,7 @@ public class UserService {
     @Autowired
     private UserBusinessLogic userBusinessLogic;
 
+    //REST POST-method for logging in with google OAuth
     @PostMapping("/login")
     @CrossOrigin(origins = "http://localhost:3000")
     public void login(@RequestBody String googleID) {
