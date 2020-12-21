@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 public class UserBusinessLogic {
     private static Logger log = LoggerFactory.getLogger(UserBusinessLogic.class);
 
+    //Inject an instance of UserRepository here
     @Autowired
     private UserRepository userRepository;
 
+    //Logging in if user exists in database. If user does not exist, add user to database
     public void login(String googleID) {
         if(!userExists(googleID)) {
             addUser(googleID);
@@ -22,10 +24,12 @@ public class UserBusinessLogic {
         }
     }
 
+    //Helper method to check if user already exists
     private boolean userExists(String googleID) {
         return userRepository.findByGoogleID(googleID) != null;
     }
 
+    //Helper method to add user to database
     private void addUser(String googleID) {
         userRepository.save(new User(googleID));
         log.info("User {} Added ", googleID);
